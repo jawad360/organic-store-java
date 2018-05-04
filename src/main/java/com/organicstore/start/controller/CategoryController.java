@@ -1,29 +1,48 @@
 package com.organicstore.start.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.organicstore.start.model.Category;
 import com.organicstore.start.repository.CategoryRepsitory;
 
 @RestController
-public class CategoryController {
+public class CategoryController
+{
 
-	@Autowired
-	private CategoryRepsitory categoryRepsitory;
-	
-	@RequestMapping(value="/category", method=RequestMethod.GET)
-	public List<Category> getAllPersons() {
-		return categoryRepsitory.findAll();
-	}
-	
-	@RequestMapping(value="/category", method=RequestMethod.POST)
-	public void insertCategory(@RequestBody Category person) {
-		categoryRepsitory.save(person);
-	}
+    @Autowired
+    private CategoryRepsitory categoryRepsitory;
+
+    @GetMapping("/category")
+    public List<Category> getAllCategories()
+    {
+        return categoryRepsitory.findAll();
+    }
+
+    @GetMapping("/category/{id}")
+    public Optional<Category> getCategoryById(@PathVariable String id)
+    {
+        return categoryRepsitory.findById(id);
+    }
+
+    @PostMapping("/category")
+    public void insertCategory(@RequestBody List<Category> category)
+    {
+        categoryRepsitory.saveAll(category);
+    }
+
+    @DeleteMapping("/category/{id}")
+    public void deleteCategory(@PathVariable String id)
+    {
+        categoryRepsitory.deleteById(id);
+    }
 }
