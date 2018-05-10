@@ -1,22 +1,26 @@
 package com.organicstore.start.model;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "product")
 public class Product {
+    @Id
 	private String id;
 	private String name;
 	private String description;
 	private String photoM;
 	private String photoL;
+	private String categoryId;
 
-	public Product(String id, String name, String description, String photoM, String photoL) {
+	public Product(String id, String name, String description, String photoM, String photoL, String categoryId) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.photoM = photoM;
 		this.photoL = photoL;
+		this.setCategoryId(categoryId);
 	}
 
 	public Product() {
@@ -68,5 +72,15 @@ public class Product {
 	public void setPhotoL(String photoL) {
 		this.photoL = photoL;
 	}
+
+    public String getCategoryId()
+    {
+        return categoryId;
+    }
+
+    public void setCategoryId(String categoryId)
+    {
+        this.categoryId = categoryId;
+    }
 
 }
