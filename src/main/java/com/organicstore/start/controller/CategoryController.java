@@ -41,6 +41,12 @@ public class CategoryController
     {
         categoryService.saveCategory(category);
     }
+    
+    @PutMapping("/category")
+    public void updateCategory(@RequestBody List<Category> category)
+    {
+        categoryService.saveCategory(category);
+    }
 
     @DeleteMapping("/category/{id}")
     public void deleteCategory(@PathVariable String id)
