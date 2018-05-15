@@ -9,6 +9,9 @@ public class OrderDetails {
 		this.inventoryId = inventoryId;
 		this.quantity = quantity;
 	}
+	
+	public OrderDetails() {
+	}
 
 	@Override
 	public String toString() {

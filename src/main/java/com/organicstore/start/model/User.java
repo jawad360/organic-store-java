@@ -3,6 +3,7 @@ package com.organicstore.start.model;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "user")
@@ -15,9 +16,8 @@ public class User {
 	private String phone;
 	private String password;
 	private Address address;
+	@DBRef
 	private List<Order> order;
-
-	
 
 	public User() {
 		super();
