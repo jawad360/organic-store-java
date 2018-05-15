@@ -1,5 +1,6 @@
 package com.organicstore.start.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,9 +31,14 @@ public class OrderService {
 			Optional<User> user = userRepository.findById(userId);
 			if (user.isPresent()) {
 				List<Order> orders = user.get().getOrder();
-				orders.add(order);
-				user.get().setOrder(orders);
-				userRepository.save(user.get());
+				boolean isOrderPresent = orders.stream().anyMatch(o -> o.getId().equals(order.getId()));
+				if(!isOrderPresent) {
+					if(orders == null)
+						orders = new ArrayList<Order>();
+					orders.add(order);
+					user.get().setOrder(orders);
+					userRepository.save(user.get());
+				}
 			}
 			orderRepository.save(order);
 		}

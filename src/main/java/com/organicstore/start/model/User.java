@@ -15,7 +15,7 @@ public class User {
 	private String email;
 	private String phone;
 	private String password;
-	private Address address;
+	private List<Address> address;
 	@DBRef
 	private List<Order> order;
 
@@ -23,7 +23,7 @@ public class User {
 		super();
 	}
 
-	public User(String id, String name, String email, String phone, String password, Address address,
+	public User(String id, String name, String email, String phone, String password, List<Address> address,
 			List<Order> order) {
 		super();
 		this.id = id;
@@ -43,11 +43,11 @@ public class User {
 		this.order = order;
 	}
 
-	public Address getAddress() {
+	public List<Address> getAddress() {
 		return address;
 	}
 
-	public void setAddress(Address address) {
+	public void setAddress(List<Address> address) {
 		this.address = address;
 	}
 

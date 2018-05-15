@@ -63,8 +63,8 @@ public class UserService {
 				User currentUserDocument = userRepository.findById(user.getId()).get();
 				User newUser = user;
 				user = currentUserDocument;
-				if((newUser.getAddress() != null && newUser.getAddress().getPincode() != null && newUser.getAddress().getPincode() != ""))
-					user.getAddress().setPincode(newUser.getAddress().getPincode());
+				//if((newUser.getAddress() != null && newUser.getAddress().getPincode() != null && newUser.getAddress().getPincode() != ""))
+				//	user.getAddress().setPincode(newUser.getAddress().getPincode());
 				if( (newUser.getName() != null && newUser.getName() != "") )
 					user.setName(newUser.getName());
 				if((newUser.getEmail() != null &&	newUser.getEmail() != ""))
