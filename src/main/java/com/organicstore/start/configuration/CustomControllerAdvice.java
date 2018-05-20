@@ -12,7 +12,7 @@ import com.organicstore.start.exception.ResourceNotFoundException;
 import com.organicstore.start.model.ExceptionResponse;
 
 @ControllerAdvice
-public class CutomerControllerAdvice {
+public class CustomControllerAdvice {
 
 	@ExceptionHandler(ResourceNotFoundException.class)
 	@ResponseStatus(value = HttpStatus.NOT_FOUND)
