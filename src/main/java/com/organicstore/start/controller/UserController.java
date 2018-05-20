@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.organicstore.start.exception.ResourceNotFoundException;
 import com.organicstore.start.model.Order;
 import com.organicstore.start.model.User;
 import com.organicstore.start.service.UserService;
@@ -53,7 +54,7 @@ public class UserController {
 	}
 	
 	@DeleteMapping("/user/{id}")
-	public void deleteUser(@PathVariable String id) {
+	public void deleteUser(@PathVariable String id) throws ResourceNotFoundException {
 		userService.deleteUser(id);
 	}
 }
